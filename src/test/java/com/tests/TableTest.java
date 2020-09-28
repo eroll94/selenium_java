@@ -9,6 +9,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 
 public class TableTest {
 
@@ -37,6 +39,15 @@ public class TableTest {
         //get all data from table
         String tabela =  driver.findElement(By.className("tsc_table_s13")).getText();
         System.out.println("Read all data from table: \n" + tabela);
+
+        //Number of rows
+        WebElement tbl = driver.findElement(By.className("tsc_table_s13"));
+        List<WebElement> tr = tbl.findElements(By.tagName("tr"));
+        List<WebElement> th = tbl.findElements(By.tagName("th"));
+        tr.size();
+        th.size();
+        System.out.println("Number of tr is: " + tr.size());
+        System.out.println("Number of th is: " + th.size());
 
 
 
