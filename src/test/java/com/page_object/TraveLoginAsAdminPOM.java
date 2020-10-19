@@ -3,16 +3,17 @@ package com.page_object;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class MyStoreLoginPOM extends Base{
-
-        final By username = By.xpath("//*[@id=\"email\"]");
-
-        final By password = By.xpath("/html//input[@id='passwd']");
-
-        final By signInClick = By.xpath("//button[@id='SubmitLogin']/span");
+public class TraveLoginAsAdminPOM extends Base{
 
 
-        public MyStoreLoginPOM(WebDriver driver){
+        final By username = By.xpath("/html/body/div[2]/form[1]//input[@name='email']");
+
+        final By password = By.xpath("/html/body/div[2]/form[1]//input[@name='password']");
+
+        final By signInClick = By.xpath("/html/body/div[2]/form[1]/button[@type='submit']");
+
+
+        public TraveLoginAsAdminPOM(WebDriver driver){
             super(driver);
         }
 
