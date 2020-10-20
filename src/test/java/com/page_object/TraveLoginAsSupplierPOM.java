@@ -12,6 +12,15 @@ public class TraveLoginAsSupplierPOM extends Base{
 
     public TraveLoginAsSupplierPOM(WebDriver driver){
         super(driver);
-
     }
+    public void usernameSendKeys(String string){
+        sendKeys(username, string);
+    }
+    public void passwordSetKeys(String string){
+        sendKeys(password, string);
+    }
+    public void clickOnLngBtn(){
+        clickElement(clickOnLogin);
+    }
+
 }
