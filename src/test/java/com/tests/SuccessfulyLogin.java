@@ -50,6 +50,7 @@ public class SuccessfulyLogin {
         String verMsg = driver.findElement(By.xpath("//*[@id=\"mainHeader\"]/strong")).getText();
         Assert.assertEquals(verMsg, "Admin", "Message is not same - failed!");
 
+        //test
     }
 
 }
