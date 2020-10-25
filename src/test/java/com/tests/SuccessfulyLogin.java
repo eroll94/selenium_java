@@ -1,7 +1,7 @@
 package com.tests;
 
 import com.page_object.HomePage;
-import com.page_object.TraveLoginAsAdminPOM;
+import com.page_object.loginAsUserPOM;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -11,13 +11,10 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class SuccessfulyLogin {
-
-    final static String USER = "admin@phptravels.com";
-    final static String PW = "demoadmin";
-
+    
     WebDriver driver;
     HomePage homePage;
-    TraveLoginAsAdminPOM traveLoginAsAdminPOM;
+    loginAsUserPOM loginAsUser;
 
 
     @BeforeTest
@@ -28,8 +25,7 @@ public class SuccessfulyLogin {
         homePage.openUrl(HomePage.URL);
         driver.manage().window().setSize(new Dimension(1920, 1080));
 
-        traveLoginAsAdminPOM = new TraveLoginAsAdminPOM(driver);
-        traveLoginAsAdminPOM.clickOnAdminLink();
+        loginAsUser = new loginAsUserPOM(driver);
         Thread.sleep(3000);
     }
     @AfterTest
@@ -42,15 +38,16 @@ public class SuccessfulyLogin {
     }
     @Test
     public void adminLogin() throws InterruptedException{
+        loginAsUser.clickOnAdminLink();
         Thread.sleep(3000);
-        traveLoginAsAdminPOM.usernameSendKeys("admin@phptravels.com");
-        traveLoginAsAdminPOM.passwordSendKeys("demoadmin");
-        traveLoginAsAdminPOM.clickOnLoginBtn();
+        loginAsUser.usernameSendKeys("kamacrown94@gmail.com");
+        loginAsUser.passwordSendKeys("ferari2231");
+        loginAsUser.clickOnLoginBtn();
+        Thread.sleep(3000);
 
-        String verMsg = driver.findElement(By.xpath("//*[@id=\"mainHeader\"]/strong")).getText();
-        Assert.assertEquals(verMsg, "Admin", "Message is not same - failed!");
-
-        //test
+        String verMsg = driver.findElement(By.className("info-account")).getText();
+        System.out.print("Loged page text: " + verMsg);
+        Assert.assertEquals(verMsg, "Welcome to your account. Here you can manage all of your personal information and orders.", "Message in not same failed");
     }
 
 }
