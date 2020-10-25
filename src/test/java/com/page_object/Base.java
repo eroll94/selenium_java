@@ -17,7 +17,6 @@ public class Base {
 
     private WebDriver driver;
 
-
     public Base (WebDriver driver){
         this.driver = driver;
     }

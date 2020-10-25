@@ -3,7 +3,7 @@ package com.page_object;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class loginAsUserPOM extends Base{
+public class LoginAsUserPOM extends Base{
 
 //    final By adminLogin = By.linkText("https://www.phptravels.net/admin");
 
@@ -15,7 +15,7 @@ public class loginAsUserPOM extends Base{
     final By signInClick = By.id("SubmitLogin");
 
 
-    public loginAsUserPOM(WebDriver driver){
+    public LoginAsUserPOM(WebDriver driver){
         super(driver);
     }
 
