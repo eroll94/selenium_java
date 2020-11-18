@@ -9,4 +9,6 @@ public class HomePage extends Base {
         public HomePage(WebDriver driver){
             super(driver);
         }
+
+        //dummy text
 }
