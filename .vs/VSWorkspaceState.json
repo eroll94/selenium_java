@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src\\test",
+    "\\src\\test\\java",
+    "\\src\\test\\java\\com",
+    "\\src\\test\\java\\com\\page_object",
+    "\\src\\test\\java\\com\\tests",
+    "\\target",
+    "\\target\\test-classes",
+    "\\target\\test-classes\\com",
+    "\\target\\test-classes\\com\\tests"
+  ],
+  "SelectedNode": "\\target\\test-classes\\com\\tests\\AddProductToCart.class",
+  "PreviewInSolutionExplorer": false
+}

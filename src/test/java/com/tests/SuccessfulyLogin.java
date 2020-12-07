@@ -23,7 +23,7 @@ public class SuccessfulyLogin {
         homePage = new HomePage(driver);
         driver = homePage.chromeDriverConnection();
         homePage.openUrl(HomePage.URL);
-        driver.manage().window().setSize(new Dimension(1920, 1080));
+        driver.manage().window().maximize();
 
         loginAsUser = new LoginAsUserPOM(driver);
         Thread.sleep(3000);

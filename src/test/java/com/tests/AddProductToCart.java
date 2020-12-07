@@ -3,17 +3,16 @@ package com.tests;
 import com.page_object.AddToCartPOM;
 import com.page_object.HomePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.openqa.selenium.JavascriptExecutor;
+
 
 public class AddProductToCart {
 
     final By hoveredElement = By.xpath("/html//header[@id='header']/div[3]/div[@class='container']//a[@title='View my shopping cart']");
-
 
     WebDriver driver;
     HomePage homePage;
@@ -22,34 +21,41 @@ public class AddProductToCart {
     @BeforeTest
     public void setUp() throws InterruptedException {
 
-        addToCartPOM = new AddToCartPOM(driver);
-
         homePage = new HomePage(driver);
         driver = homePage.chromeDriverConnection();
         homePage.openUrl(HomePage.URL);
-        driver.manage().window().setSize(new Dimension(1920, 1080));
+        driver.manage().window().maximize();
+        addToCartPOM = new AddToCartPOM(driver); // main class which contains all POM Elements should be last init in beforeTest
+
         Thread.sleep(3000);
+    }
+
+    @AfterTest
+    public void tearDownTest(){
+        //topMenu.clickLogOut();
+        driver.close();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
 
     @Test
-    public void addToCart(){
+    public void addToCart() throws InterruptedException{
 
-        addToCartPOM.addProductToCart();
-        addToCartPOM.addToCartButton();
-        addToCartPOM.proceedTocheckoutBnt();
-        
-        Actions hover = new Actions(driver);
+          addToCartPOM.addProductToCart();
+          Thread.sleep(1200);
 
-        WebElement ele_hover = driver.findElement(hoveredElement);
+          addToCartPOM.addToCartButton();
+          Thread.sleep(1500);
 
-        hover.moveToElement(ele_hover);
+          addToCartPOM.proceedTocheckoutBnt();
+          Thread.sleep(4000);
 
-        hover.build();
+          JavascriptExecutor js = (JavascriptExecutor) driver;
+          js.executeScript("window.scrollBy(0,500)"); //Scroll vertically down by 200 pixels
 
-        hover.perform();
-        //test
-//        addToCartPOM.onHoverElement();
+          addToCartPOM.finalCheckoutClick();
 
     }
 

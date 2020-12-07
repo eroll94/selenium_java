@@ -1,0 +1,15 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "task-selenium_java",
+      "appliesTo": "/",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "task-AddProductToCart",
+      "appliesTo": "target/test-classes/com/tests/AddProductToCart.class",
+      "type": "launch"
+    }
+  ]
+}
