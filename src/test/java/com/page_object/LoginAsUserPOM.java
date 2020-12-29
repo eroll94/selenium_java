@@ -12,6 +12,8 @@ public class LoginAsUserPOM extends Base{
 
     final By signInClick = By.id("SubmitLogin");
 
+    final By backToMainPage = By.className("home");
+
 
     public LoginAsUserPOM(WebDriver driver){
         super(driver);
@@ -31,5 +33,8 @@ public class LoginAsUserPOM extends Base{
 
     public void clickOnAdminLink(){
         clickElement(loginAsUser);
+    }
+    public void backOnMainPage(){
+        clickElement(backToMainPage);
     }
 }
