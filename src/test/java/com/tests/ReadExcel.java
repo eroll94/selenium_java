@@ -7,6 +7,8 @@ import java.io.IOException;
 
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -24,7 +26,25 @@ public class ReadExcel {
         XSSFWorkbook workbook = new XSSFWorkbook(fis);
 
         //selecting wanted sheet it can be by name(string) or number 0 is first one 1 is second etc..
-//        XSSFSheet sheetInt = workbook.getSheetAt(0);
+        XSSFSheet sheetInt = workbook.getSheetAt(1);
+
+        int rowCount = sheetInt.getPhysicalNumberOfRows();
+
+        for (int i = 0; i < rowCount; i++) {
+            XSSFRow row = sheetInt.getRow(i);
+
+            int cellCount = row.getPhysicalNumberOfCells();
+            for (int j = 0; j < cellCount; j++) {
+
+                XSSFCell cell = row.getCell(j);
+                String cellValue = getCellValue(cell);
+                System.out.print(" || " + cellValue);
+
+            }
+            System.out.println();
+        }
+
+        //selecting wanted sheet first one with string
         XSSFSheet sheetStr = workbook.getSheet("Sheet1");
 
 
@@ -62,6 +82,21 @@ public class ReadExcel {
         System.out.print("\nName of row: "+ square1 + "\n" + squeare2 + "\n" + squeare3);
 
         fis.close();
+
+    }
+
+    public static String getCellValue(XSSFCell cell){
+
+        switch (cell.getCellType()){
+            case NUMERIC:
+                return String.valueOf(cell.getNumericCellValue());
+            case BOOLEAN:
+                return String.valueOf(cell.getBooleanCellValue());
+            case STRING:
+                return cell.getStringCellValue();
+            default:
+                return cell.getStringCellValue();
+        }
 
     }
 
