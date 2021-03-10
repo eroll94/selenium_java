@@ -1,0 +1,9 @@
+com\tests\SuccessfulyLogin.class
+com\tests\TableTest.class
+com\page_object\AddressShippingPaymentPOM.class
+com\page_object\AddToCartPOM.class
+com\page_object\HomePage.class
+com\page_object\Base.class
+com\page_object\LoginAsUserPOM.class
+com\tests\E2E_WholeProcessOfBuy.class
+com\tests\AddProductToCart.class
